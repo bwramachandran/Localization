@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BwLocContext.cs" />
+    <Compile Remove="Class1.cs" />
+    <Compile Remove="Functions\Function.GetRawForeignVOForecastingData.cs" />
+    <Compile Remove="Functions\Function.GetStringExportStatusAndInfo.cs" />
+    <Compile Remove="Functions\FunctionModels.cs" />
+    <Compile Remove="Functions\IFunctionModel.cs" />
+    <Compile Remove="StoredProcedure\bsp_GetStringDataForResourceVersionIDs.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Connections.Abstractions" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+	  <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+	  <PackageReference Include="Mindbox.Data.Linq" Version="3.0.0" />
+	  <PackageReference Include="System.Linq" Version="4.3.0" />
+	  <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+	  <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LocalizationTools.Model\LocalizationTools.Model.csproj" />
+  </ItemGroup>
+
+</Project>

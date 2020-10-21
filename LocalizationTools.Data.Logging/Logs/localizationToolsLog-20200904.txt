@@ -1,0 +1,38 @@
+2020-09-04T09:28:25.3419392-05:00 8000001b-0007-fe00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[LocalizationTools.Model.DTO.RemovedStringDto, LocalizationTools.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+<>f__AnonymousType1`2 -> RemovedStringDto
+<>f__AnonymousType1`2[[<>f__AnonymousType0`2[[LocalizationTools.Data.RDB.Models.TResourceVersionString, LocalizationTools.Data.RDB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LocalizationTools.Data.RDB.Models.TResourceVersion, LocalizationTools.Data.RDB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], LocalizationTools.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LocalizationTools.Data.RDB.Models.TResourceVersion, LocalizationTools.Data.RDB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> LocalizationTools.Model.DTO.RemovedStringDto
+   at lambda_method(Closure , <>f__AnonymousType1`2 , RemovedStringDto , ResolutionContext )
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at LocalizationTools.Data.Shared.DataServiceHelper.IsRemovedString(Int32 stringId, Int32 branchId) in C:\Users\aramachandran\LocalizationTools\LocalizationTools.Data\Shared\DataServiceHelper.cs:line 75
+   at LocalizationTools.Data.LocAPI.DataServiceLocAPI.GetAllEnglishStrings(EnglishStringPayload payload) in C:\Users\aramachandran\LocalizationTools\LocalizationTools.Data\LocAPI\DataServiceLocAPI.EnglishStream.cs:line 32
+   at LocalizationTools.Service.LocAPIService.GetAllEnglishString() in C:\Users\aramachandran\LocalizationTools\LocalizationTools.Service\LocAPIService.cs:line 19
+   at LocalizationTools.Controllers.LocApiController.EnglishStream() in C:\Users\aramachandran\LocalizationTools\LocalizationTools\Controllers\LocAPI.cs:line 23
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)

@@ -1,0 +1,68 @@
+version: "3.3"
+services: 
+ 
+  netcore_dev:
+    
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ausdkrregistry-vip.aus.biowareonline.int:443/bwlocvo-services:f2dfec3d5281   
+    ports:
+      - 61906:80 #http server
+      - 44307:443 #https server
+    volumes:
+      - netcorelogs_dev:/var/logs/dev
+    secrets:
+      - source: wildcard_biowareonline_san_cert_pem
+        target: bwlocvo_pem
+        uid: '1003'
+        gid: '1003'
+        mode: 0400
+      - source: wildcard_biowareonline_san_cert_key
+        target: bwlocvo_key
+        uid: '1003'
+        gid: '1003'
+        mode: 0400
+      - source: bwlocvo_user
+        target: bwlocvo_user
+        uid: '1003'
+        gid: '1003'
+        mode: 0400
+      - source: bwlocvo_pwd
+        target: bwlocvo_pwd
+        uid: '1003'
+        gid: '1003'
+        mode: 0400
+    environment:
+      - BWLOCVO_ENV=DEV
+      - HTTP_REDIRECT_PORT=8083
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+    healthcheck:
+      test: curl -k -f https://localhost || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+ 
+    
+
+volumes:
+  netcorelogs_dev:
+    driver: local
+secrets:
+  wildcard_biowareonline_san_cert_pem:
+    external: true
+  wildcard_biowareonline_san_cert_key:
+    external: true 
+  bwlocvo_user:
+    external: true
+  bwlocvo_pwd:
+    external: true   
+
+    
+    
+    
+    
