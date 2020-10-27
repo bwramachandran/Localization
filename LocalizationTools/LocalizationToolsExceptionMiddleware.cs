@@ -9,19 +9,19 @@ namespace LocalizationTools.Data.Logging
 {
     public class LocalizationToolsExceptionMiddleware
     {
-        private readonly RequestDelegate _next;
-        private ILogger _logger;
+        private readonly RequestDelegate m_next;
+        private ILogger m_logger;
 
         public LocalizationToolsExceptionMiddleware(RequestDelegate next)
         {
-            _next = next;
+            m_next = next;
         }
 
         public async Task Invoke(HttpContext context)
         {
             try
             {
-                await _next(context);
+                await m_next(context);
             }
             catch (Exception e)
             {
@@ -37,7 +37,7 @@ namespace LocalizationTools.Data.Logging
 
             if (!string.IsNullOrEmpty(exceptionMessage))
             {
-                _logger.LogError("Error in the middleware", exceptionMessage);
+                m_logger.LogError("Error in the middleware", exceptionMessage);
             }
         }
     }

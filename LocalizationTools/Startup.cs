@@ -54,7 +54,6 @@ namespace LocalizationTools
                     {
                         Name = "Bioware - Localization Team",
                         Email = string.Empty,
-                        Url = "https://twitter.com/spboyer"
                     };
                 };
             });

@@ -9,12 +9,10 @@ namespace LocalizationTools.Data.RDB.Functions
 {
     public partial class Function : IFunction
     {
-        private readonly bw_loc_dylan_devContext m_dbContext;
         private string m_connectionString;
 
-        public Function(bw_loc_dylan_devContext dbContext, IConfiguration configuration)
+        public Function(IConfiguration configuration)
         {
-            m_dbContext = dbContext;
             m_connectionString = configuration.GetSection("ConnectionStrings:bwloctools").Value;
         }
     }
