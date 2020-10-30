@@ -20,8 +20,8 @@ namespace LocalizationTools
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile($"appSettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appSettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -39,7 +39,7 @@ namespace LocalizationTools
             services.AddTransient<IFunction, Function>();
             services.AddTransient<IProcedure, Procedure>();
             services.AddTransient<IPaginationService, PaginationService>();
-            var connection = Configuration["ConnectionStrings:bwloctools"];
+            var connection = Configuration["ConnectionString:bwloctools"];
             services.AddDbContext<bw_loc_dylan_devContext>(options => options
              .UseSqlServer(connection, o => o.EnableRetryOnFailure(10)));
             services.AddSwaggerDocument(config =>
