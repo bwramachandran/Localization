@@ -4,17 +4,17 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 WORKDIR /source
 COPY *.sln .
-COPY LocalizationTools/*.csproj ./localizationTools/ 
-COPY LocalizationTools.Data/*.csproj ./localizationTools.Data/
-COPY LocalizationTools.Model/*.csproj ./localizationTools.Model/
-COPY LocalizationTools.Service/*.csproj ./localizationTools.Service/
-COPY LocalizationTools.Data.RDB/*.csproj ./localizationTools.Data.RDB/
-COPY LocalizationTools.Data.Logging/*.csproj ./localizationTools.Data.Logging/
-COPY LocalizationToolsTest/*.csproj ./localizationToolsTest/
+COPY LocalizationTools/*.csproj ./LocalizationTools/ 
+COPY LocalizationTools.Data/*.csproj ./LocalizationTools.Data/
+COPY LocalizationTools.Model/*.csproj ./LocalizationTools.Model/
+COPY LocalizationTools.Service/*.csproj ./LocalizationTools.Service/
+COPY LocalizationTools.Data.RDB/*.csproj ./LocalizationTools.Data.RDB/
+COPY LocalizationTools.Data.Logging/*.csproj ./LocalizationTools.Data.Logging/
+COPY LocalizationToolsTest/*.csproj ./LocalizationToolsTest/
 RUN dotnet restore
 
-COPY . ./localizationTools/
-WORKDIR /source/localizationTools
+COPY . ./LocalizationTools/
+WORKDIR /source/LocalizationTools
 
 RUN dotnet publish -c release -o /app
 
@@ -24,4 +24,4 @@ WORKDIR /app
 COPY --from=build-env /app ./
 EXPOSE 5000
 EXPOSE 1433
-ENTRYPOINT ["dotnet", "localizationTools.dll"]
+ENTRYPOINT ["dotnet", "LocalizationTools.dll"]
